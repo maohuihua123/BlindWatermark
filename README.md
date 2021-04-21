@@ -1,6 +1,6 @@
 # 图片盲水印系统
 
-*  **体验：**[点击直达](http://layui.pearadmin.com)  
+*  **体验：**[点击直达](fogfore.top)  
 
 ## 添加水印
 
