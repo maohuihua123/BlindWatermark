@@ -12,6 +12,11 @@ import java.util.List;
 import static org.opencv.imgcodecs.Imgcodecs.imread;
 import static org.opencv.imgcodecs.Imgcodecs.imwrite;
 
+/**
+ * 1、DCT分块大小为8*8
+ * 2、二值图大小为100*100
+ * 3、所以原图需要800*800尺寸以上（长或宽不能低于800）
+ */
 public class WaterMarkDCT {
 
     /**
@@ -25,33 +30,37 @@ public class WaterMarkDCT {
      * @param outputPath 输出路径
      */
     public static void embed(String imagePath, String watermarkPath, String outputPath) {
+        // 读取原始图像
         Mat originaleImage = imread(imagePath);
+        // 分离通道
         List<Mat> allPlanes = new ArrayList<>();
         Core.split(originaleImage, allPlanes);
         Mat YMat = allPlanes.get(0);
+        // 获取水印的二值矩阵
         int[][] watermark = imageToMatrix(watermarkPath);
+        // 开始将水印嵌入
+        int length = 8;  // DCT变换 分块的大小
         for (int i = 0; i < watermark.length; i++) {
             for (int j = 0; j < watermark[0].length; j++) {
-                //block 表示分块 而且为 方阵
-                int length = originaleImage.rows() / watermark.length;
-                //提取每个分块
+                // 提取每个分块
+                // block表示分块 而且为8*8的方阵
                 Mat block = getImageValue(YMat, i, j, length);
-                double[] a = new double[1];
-                double[] c = new double[1];
+
                 int x1 = 1, y1 = 2;
                 int x2 = 2, y2 = 1;
-                a = block.get(x1, y1);
-                c = block.get(x2, y2);
+
+                double[] a = block.get(x1, y1);
+                double[] c = block.get(x2, y2);
                 //对分块进行DCT变换
                 Core.dct(block, block);
                 a = block.get(x1, y1);
                 c = block.get(x2, y2);
                 if (watermark[i][j] == 1) {
                     block.put(x1, y1, P);
-                    block.put(x2, y2, 0);
+                    block.put(x2, y2, -P);
                 }
                 if (watermark[i][j] == 0) {
-                    block.put(x1, y1, 0);
+                    block.put(x1, y1, -P);
                     block.put(x2, y2, P);
                 }
                 //对上面分块进行IDCT变换
@@ -82,13 +91,12 @@ public class WaterMarkDCT {
         // 注意 rows和cols 应该与之前加的水印尺寸一致
         int rows = 100;
         int cols = 100;
+        int length = 8;
         int[][] watermark = new int[rows][cols];
         // 提取每块嵌入的水印信息
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                //block 表示分块 而且为 方阵
-                int length = image.rows() / watermark.length;
-                //提取每个分块
+                //提取每个分块，block表示分块 而且为8*8的方阵
                 Mat block = getImageValue(YMat, i, j, length);
                 //对分块进行DCT变换
                 Core.dct(block, block);
