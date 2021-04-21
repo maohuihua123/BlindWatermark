@@ -1,7 +1,7 @@
 package com.mao.demo.controller;
 
 import com.mao.demo.base.QRCodeUtils;
-import com.mao.demo.watermark.WaterMaekDFT;
+import com.mao.demo.watermark.WaterMarkDFT;
 import com.mao.demo.watermark.WaterMarkDCT;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -39,7 +39,7 @@ public class WatermarkController {
             String outputPath = tempOutputFile.getAbsolutePath();
             String outputQR = tempOutputQRFile.getAbsolutePath();
             if (isText){
-                WaterMaekDFT.embed(imagePath, watermark, outputPath);
+                WaterMarkDFT.embed(imagePath, watermark, outputPath);
             }else{
                 // 默认生成100*100尺寸的二维码
                 new QRCodeUtils().QREncode(watermark, outputQR);
@@ -79,7 +79,7 @@ public class WatermarkController {
             String imagePath = temp.getAbsolutePath();
             String outputPath = tempOutputFile.getAbsolutePath();
             if (isText){
-                WaterMaekDFT.extract(imagePath, outputPath);
+                WaterMarkDFT.extract(imagePath, outputPath);
             }else{
                 WaterMarkDCT.extract(imagePath, outputPath);
             }

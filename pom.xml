@@ -41,12 +41,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
             <groupId>org.bytedeco</groupId>
             <artifactId>opencv-platform</artifactId>
             <version>4.3.0-1.5.3</version>
@@ -63,13 +57,6 @@
             <artifactId>javase</artifactId>
             <version>3.4.1</version>
         </dependency>
-<!--        &lt;!&ndash;devtools热部署&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-devtools</artifactId>-->
-<!--            <optional>true</optional>-->
-<!--            <scope>true</scope>-->
-<!--        </dependency>-->
 
     </dependencies>
 

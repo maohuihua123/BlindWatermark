@@ -5,11 +5,6 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 50MB
-#  devtools:
-#    restart:
-#      enabled: true  #设置开启热部署
-#      additional-paths: src/main/java #重启目录
-#      exclude: WEB-INF/**
   #模板引擎配置
   thymeleaf:
     cache: false

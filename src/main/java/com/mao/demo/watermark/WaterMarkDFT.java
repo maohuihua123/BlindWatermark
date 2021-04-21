@@ -11,7 +11,7 @@ import static org.opencv.imgcodecs.Imgcodecs.imwrite;
 import static org.opencv.imgproc.Imgproc.FONT_HERSHEY_COMPLEX;
 import static org.opencv.imgproc.Imgproc.putText;
 
-public class WaterMaekDFT  {
+public class WaterMarkDFT {
 
     public static void embed(String imagePath, String watermark, String outputPath) {
         Mat image = imread(imagePath);
