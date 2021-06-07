@@ -3,7 +3,6 @@ package com.mao.demo.controller;
 import com.mao.demo.base.QRCodeUtils;
 import com.mao.demo.watermark.WaterMarkDFT;
 import com.mao.demo.watermark.WaterMarkDCT;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 
-@Slf4j
 @Controller
 @RequestMapping("/watermark")
 public class WatermarkController {
@@ -55,7 +53,7 @@ public class WatermarkController {
             tempOutputFile.delete();
             tempOutputQRFile.delete();
         } catch (Exception e) {
-            log.error("", e);
+            e.printStackTrace();
         }
         return bytes;
     }
@@ -94,7 +92,7 @@ public class WatermarkController {
             temp.delete();
             tempOutputFile.delete();
         } catch (IOException e) {
-            log.error("", e);
+            e.printStackTrace();
         }
         return bytes;
     }

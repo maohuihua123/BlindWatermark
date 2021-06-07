@@ -22,7 +22,6 @@
         </li>
     </ul>
 
-    <!-- Tab panes -->
     <div class="tab-content">
         <div id="home" class="container tab-pane active"><br>
             <form class="form-horizontal" role="form" method="POST" action="/watermark/embed" enctype="multipart/form-data">
@@ -35,8 +34,8 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">水印类别</label>
                     <div class="col-sm-8">
-                        <label class="radio-inline"><input type="radio" checked name="isText" value="true">文字</label>
-                        <label class="radio-inline"><input type="radio" name="isText" value="false">二维码图片</label>
+                        <label class="radio-inline"><input type="radio" checked name="isText" value="true">文本</label>
+                        <label class="radio-inline"><input type="radio" name="isText" value="false">二维码</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -52,6 +51,12 @@
                     </div>
                 </div>
             </form>
+            <hr>
+            <div class="container">
+                <p class="text-info">注意：</p>
+                <p class="text-info">1、文本水印不支持中文</p>
+                <p class="text-info">2、二维码水印要求图片尺寸大于800*800</p>
+            </div>
         </div>
         <div id="menu1" class="container tab-pane fade"><br>
             <form class="form-horizontal" role="form" method="POST" action="/watermark/extract" enctype="multipart/form-data">
@@ -64,8 +69,8 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">水印类别</label>
                     <div class="col-sm-8">
-                        <label class="radio-inline"><input type="radio" name="isText" value="true" checked>文字</label>
-                        <label class="radio-inline"><input type="radio" name="isText" value="false">二维码图片</label>
+                        <label class="radio-inline"><input type="radio" name="isText" value="true" checked>文本</label>
+                        <label class="radio-inline"><input type="radio" name="isText" value="false">二维码</label>
                     </div>
                 </div>
                 <div class="form-group">
