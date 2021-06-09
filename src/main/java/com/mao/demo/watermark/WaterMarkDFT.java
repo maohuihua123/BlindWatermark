@@ -12,7 +12,6 @@ import static org.opencv.imgproc.Imgproc.FONT_HERSHEY_COMPLEX;
 import static org.opencv.imgproc.Imgproc.putText;
 
 public class WaterMarkDFT {
-
     public static void embed(String imagePath, String watermark, String outputPath) {
         Mat image = imread(imagePath);
         // 1.优化图像的尺寸 加快处理速度
