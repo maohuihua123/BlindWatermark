@@ -36,11 +36,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org</groupId>
             <artifactId>opencv</artifactId>
             <version>4.5.2</version>
@@ -68,6 +63,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <!-- 加上如下配置才能打包 systemPath-->
                 <configuration>
                     <includeSystemScope>true</includeSystemScope>
                 </configuration>

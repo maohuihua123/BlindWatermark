@@ -1,4 +1,4 @@
-package com.mao.demo.watermark;
+package com.mao.demo.utils;
 
 import org.opencv.core.*;
 

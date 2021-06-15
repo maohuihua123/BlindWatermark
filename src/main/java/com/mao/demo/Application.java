@@ -7,6 +7,7 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.net.URL;
 
 @SpringBootApplication
 public class Application {
@@ -15,7 +16,11 @@ public class Application {
     private static final String libPath = "lib/opencv_java452.dll";
 
     public static void main(String[] args){
-        loadLib();
+        // 1.开发时可以如此加载动态库
+        URL url = ClassLoader.getSystemResource("lib/opencv_java452.dll");
+        System.load(url.getPath());
+        // 2、打包部署时使用下面方法
+//        loadLib();
         SpringApplication.run(Application.class, args);
 
     }
@@ -24,7 +29,7 @@ public class Application {
      * SpringBoot打包后，就是一个独立的文件。
      * 使用ClassPathResource读取classpath下的lib文件，
      * 然后copy到本地磁盘，再从文件系统去加载。
-     * 注：仅在Windows 10下测试
+     * 注：（仅在Windows 10下测试）
      */
     public static void loadLib() {
         try {
